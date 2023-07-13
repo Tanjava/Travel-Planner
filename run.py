@@ -32,11 +32,35 @@ def main_menu():
 
         choice = input("Enter your choice: ")
         if choice == '1':
-            destination_management() # Add destination management function
+            destination_management()
         elif choice == '2':
             activity_management() # Add activity management function
         elif choice == '3':
             print("\nGoodbye!")
+            break
+        else:
+            print("\nInvalid choice. Please try again.")
+
+def destination_management():
+    """
+    Display the destination management menu options
+    """
+    while True:
+        print("\n==== Destination Management ====\n")
+        print("1. Add a new destination")
+        print("2. View destinations")
+        print("3. Remove a destination")
+        print("4. Go back to main menu\n")
+        print("================================ \n")
+
+        choice = input("Enter your choice: ")
+        if choice == '1':
+            add_destination() # Add the add destination function
+        elif choice == '2':
+            view_destinations() # Add the view destination function
+        elif choice == '3':
+            remove_destination() # Add the remove destination function
+        elif choice == '4':
             break
         else:
             print("\nInvalid choice. Please try again.")
