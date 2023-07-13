@@ -65,4 +65,19 @@ def destination_management():
         else:
             print("\nInvalid choice. Please try again.")
 
+def add_destination():
+    """
+    Update worksheet, add new row with new destination 
+    """
+    print("\n==== Add Destination ====\n")
+    city = input("Enter the city name: ")
+    country = input("Enter the country name: ")
+
+    destination = f"\n{city}, {country}"
+    try: 
+        travel.append_row([destination])
+        print(f"{destination} added sucessfully!")
+    except Exception as e:
+        print(f"An error occurred while adding your destination: {str(e)}")
+
 main_menu()
