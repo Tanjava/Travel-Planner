@@ -17,6 +17,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('travel_planner')
 
 travel = SHEET.worksheet('travel')
+data = travel.get_all_values()
 
 
 def main_menu():
@@ -55,9 +56,9 @@ def destination_management():
 
         choice = input("Enter your choice: ")
         if choice == '1':
-            add_destination() # Add the add destination function
+            add_destination()
         elif choice == '2':
-            view_destinations() # Add the view destination function
+            view_destinations()
         elif choice == '3':
             remove_destination() # Add the remove destination function
         elif choice == '4':
@@ -79,5 +80,21 @@ def add_destination():
         print(f"{destination} added sucessfully!")
     except Exception as e:
         print(f"An error occurred while adding your destination: {str(e)}")
+
+
+def view_destinations():
+    """
+    View the user's destinations
+    """
+    print("\n==== Your Destinations ====")
+    try:
+        if len(data) > 1:
+            for row in data[1:]:
+                print(row[0])
+        else:
+            print("\nNo destinations found...")
+    except Exception as e:
+        print(f"An error occurred while viewing your destinations: {str(e)}")
+
 
 main_menu()
