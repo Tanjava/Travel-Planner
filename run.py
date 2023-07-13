@@ -92,9 +92,36 @@ def view_destinations():
             for row in data[1:]:
                 print(row[0])
         else:
-            print("\nNo destinations found...")
+            print("\n\nNo destinations found...\n")
     except Exception as e:
         print(f"An error occurred while viewing your destinations: {str(e)}")
+
+
+def remove_destination():
+    """
+    Update worksheet, remove the row of the chosen destination 
+    """
+    print("\n==== Remove Destinations ====")
+    try:
+        if len(data) <= 1:
+            print("\n\nNo destinations found...\n")
+            return
+
+        view_destinations()
+        del_destination = int(input("\n\nEnter the number of the destination you'd like to remove (enter 0 to go back): "))
+
+        if del_destination == 0:
+            return
+
+        if del_destination > 0 and del_destination <= len(data) - 1:
+            destination = data[del_destination][0]
+            travel.delete_rows(del_destination + 1)
+            print(f"{destination} removed successfully!")
+        else:
+            print("\nInvalid destination number. Please try again\n")
+    except Exception as e:
+        print(f"An error occurred while removing the destination: {str(e)}")
+
 
 
 main_menu()
