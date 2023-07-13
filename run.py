@@ -16,6 +16,29 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('travel_planner')
 
-travel = SHEET.worksheet('travel').get_all_values()
+travel = SHEET.worksheet('travel')
 
-print(travel)
+
+def main_menu():
+    """
+    Display the main menu options
+    """
+    while True: 
+        print("\n==== Travel Planner ====\n")
+        print("1. Destination Management")
+        print("2. Activity Management")
+        print("3. Exit\n")
+        print("======================== \n")
+
+        choice = input("Enter your choice: ")
+        if choice == '1':
+            destination_management() # Add destination management function
+        elif choice == '2':
+            activity_management() # Add activity management function
+        elif choice == '3':
+            print("\nGoodbye!")
+            break
+        else:
+            print("\nInvalid choice. Please try again.")
+
+main_menu()
