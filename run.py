@@ -31,7 +31,7 @@ def main_menu():
         print("3. Exit\n")
         print("======================== \n")
 
-        choice = input("Enter your choice: ")
+        choice = input("Enter your choice: \n")
         if choice == '1':
             destination_management()
         elif choice == '2':
@@ -54,13 +54,13 @@ def destination_management():
         print("4. Go back to main menu\n")
         print("================================ \n")
 
-        choice = input("Enter your choice: ")
+        choice = input("Enter your choice: \n")
         if choice == '1':
             add_destination()
         elif choice == '2':
             view_destinations()
         elif choice == '3':
-            remove_destination() # Add the remove destination function
+            remove_destination()
         elif choice == '4':
             break
         else:
@@ -71,8 +71,8 @@ def add_destination():
     Update worksheet, add new row with new destination 
     """
     print("\n==== Add Destination ====\n")
-    city = input("Enter the city name: ")
-    country = input("Enter the country name: ")
+    city = input("Enter the city name: 'n")
+    country = input("Enter the country name: \n")
 
     destination = f"\n{city}, {country}"
     try: 
@@ -99,7 +99,7 @@ def view_destinations():
 
 def remove_destination():
     """
-    Update worksheet, remove the row of the chosen destination 
+    Update worksheet, remove the row of a specific destination 
     """
     print("\n==== Remove Destinations ====")
     try:
@@ -108,7 +108,7 @@ def remove_destination():
             return
 
         view_destinations()
-        del_destination = int(input("\n\nEnter the number of the destination you'd like to remove (enter 0 to go back): "))
+        del_destination = int(input("\n\nEnter the number of the destination you'd like to remove (enter 0 to go back): \n"))
 
         if del_destination == 0:
             return
