@@ -144,9 +144,9 @@ def flight_management():
         if choice == '1':
             add_flight_details()
         elif choice == '2':
-            view_flight_details() # Add function to view flight details
+            view_flight_details()
         elif choice == '3':
-            remove_flight_details() # Add function to remove flight details
+            remove_flight_details()
         elif choice == '4':
             break
         else:
@@ -187,7 +187,7 @@ def add_flight_details():
 
 def view_flight_details():
     """
-    View flight details of a specific destination
+    Retrieve and view flight details of a specific destination
     """
     print("\n==== View Flight Details ====\n")
     data = travel.get_all_values()
@@ -214,9 +214,40 @@ def view_flight_details():
                 print(f"Departure Date: {departure_date}")
                 print(f"Departure Time: {departure_time}\n")
             else:
-                print("No flight details found for this destination.")
+                print("\nNo flight details found for this destination.")
         else:
-            print("Invalid destination number. Please try again")
+            print("\nInvalid destination number. Please try again")
+    except Exception as e:
+        print(f"An error occurred while viewing flight details: {str(e)}") 
+
+
+def remove_flight_details():
+    """
+    Update worksheet, remove flight details of specific destination
+    """
+    print("\n==== Remove Flight Details ====\n")
+    data = travel.get_all_values()
+    try:
+        if len(data) <= 1:
+            print("\nNo destinations found...\n")
+            return
+
+        view_destinations()
+        destination_choice = int(input("Enter the number of your destination to remove your flight details (enter 0 to go back): \n"))
+
+        if destination_choice == 0:
+            return
+
+        if destination_choice > 0 and destination_choice <= len(data) - 1:
+            destination = data[destination_choice][0]
+            flight_details = data[destination_choice][1]
+            if flight_details:
+                travel.update_cell(destination_choice +1, 2, "")
+                print(f"\nSucessfully removed flight details for {destination}")
+            else: 
+                print("\nNo flight details found for this destination.")
+        else:
+            print("\nInvalid destination number. Please try again")
     except Exception as e:
         print(f"An error occurred while viewing flight details: {str(e)}") 
     
