@@ -33,6 +33,7 @@ def main_menu():
         print("\n==== Main Travel Menu ====\n")
         print("1. Destination Management")
         print("2. Flight Management")
+        print("3. Accommodation Management")
         print("3. Exit\n")
         print("========================== \n")
 
@@ -42,6 +43,8 @@ def main_menu():
         elif choice == '2':
             flight_management() 
         elif choice == '3':
+            accommodation_management()
+        elif choice == '4':
             print("\nGoodbye!")
             break
         else:
@@ -53,9 +56,9 @@ def destination_management():
     """
     while True:
         print("\n==== Destination Management ====\n")
-        print("1. Add a new destination")
+        print("1. Add new destination")
         print("2. View destinations")
-        print("3. Remove a destination")
+        print("3. Remove destination")
         print("4. Go back to main menu\n")
         print("================================ \n")
 
@@ -190,7 +193,7 @@ def add_flight_details():
 
 def view_flight_details():
     """
-    Retrieve and view flight details of a specific destination
+    Retrieve and view flight details of specific destination
     """
     print("\n==== View Flight Details ====\n")
     data = travel.get_all_values()
@@ -215,7 +218,7 @@ def view_flight_details():
                 print(f"Airline: {airline}")
                 print(f"Flight Number: {flight_number}")
                 print(f"Departure Date: {departure_date}")
-                print(f"Departure Time: {departure_time}\n")
+                print(f"Departure Time: {departure_time}")
             else:
                 print("\nNo flight details found for this destination.")
         else:
@@ -253,6 +256,31 @@ def remove_flight_details():
             print("\nInvalid destination number. Please try again")
     except Exception as e:
         print(f"An error occurred while viewing flight details: {str(e)}") 
+
+
+def accommodation_management():
+    """
+    Display the accommodation management menu options
+    """
+    while True:
+        print("\n==== Accommodation Management ====\n")
+        print("1. Add new accommodation details")
+        print("2. View accommodation details")
+        print("3. Remove accommodation details")
+        print("4. Go back to main menu\n")
+        print("=========================== \n")
+
+        choice = input("Enter your choice: \n")
+        if choice == '1':
+            add_accommodation_details()
+        elif choice == '2':
+            view_accommodation_details()
+        elif choice == '3':
+            remove_accommodation_details()
+        elif choice == '4':
+            break
+        else:
+            print("\nInvalid choice. Please try again.")
     
 
 main_menu()
