@@ -172,12 +172,11 @@ def add_flight_details():
 
         if destination_choice > 0 and destination_choice <= len(data) - 1:
             destination = data[destination_choice][0]
-            flight_details = data[destination_choice][1]
             airline = input("\nEnter your airline: ")
             flight_number = input("Enter your flight number: ")
             departure_date = input("Enter your departure date: ")
             departure_time = input("Enter your departure time: ")
-            flight_details = f"{airline}, {flight_number}, {departure_date}, {departure_time}"
+            flight_details = f"{airline}, {flight_number}, {departure_date}, {departure_time}\n"
             travel.update_cell(destination_choice + 1, 2, flight_details)
             print(f"\nSuccessfully added the following flight details for {destination}: {flight_details}")
         else:
@@ -186,6 +185,41 @@ def add_flight_details():
         print(f"An error occurred while adding your activity: {str(e)}")
 
 
+def view_flight_details():
+    """
+    View flight details of a specific destination
+    """
+    print("\n==== View Flight Details ====\n")
+    data = travel.get_all_values()
+    try:
+        if len(data) <= 1:
+            print("\nNo destinations found...\n")
+            return
+
+        view_destinations()
+        destination_choice = int(input("Enter the number of your destination to view your flight details (enter 0 to go back): \n"))
+
+        if destination_choice == 0:
+            return
+
+        if destination_choice > 0 and destination_choice <= len(data) - 1:
+            destination = data[destination_choice][0]
+            flight_details = data[destination_choice][1]
+            if flight_details:
+                airline, flight_number, departure_date, departure_time = flight_details.split(", ")
+                print("\n==== View Flight Details ====\n")
+                print(f"\u2708  {destination} ")
+                print(f"Airline: {airline}")
+                print(f"Flight Number: {flight_number}")
+                print(f"Departure Date: {departure_date}")
+                print(f"Departure Time: {departure_time}\n")
+            else:
+                print("No flight details found for this destination.")
+        else:
+            print("Invalid destination number. Please try again")
+    except Exception as e:
+        print(f"An error occurred while viewing flight details: {str(e)}") 
+    
 
 main_menu()
 
