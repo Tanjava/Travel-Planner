@@ -175,10 +175,10 @@ def add_flight_details():
 
         if destination_choice > 0 and destination_choice <= len(data) - 1:
             destination = data[destination_choice][0]
-            airline = input("\nEnter your airline: ")
-            flight_number = input("Enter your flight number: ")
-            departure_date = input("Enter your departure date: ")
-            departure_time = input("Enter your departure time: ")
+            airline = input("\nEnter your airline: \n")
+            flight_number = input("Enter your flight number: \n")
+            departure_date = input("Enter your departure date: \n")
+            departure_time = input("Enter your departure time: \n")
             flight_details = f"{airline}, {flight_number}, {departure_date}, {departure_time}\n"
             travel.update_cell(destination_choice + 1, 2, flight_details)
             print(f"\nSuccessfully added the following flight details for {destination}: {flight_details}")
