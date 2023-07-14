@@ -29,7 +29,7 @@ def main_menu():
          
         print("\n==== Travel Planner ====\n")
         print("1. Destination Management")
-        print("2. Activity Management")
+        print("2. Flight Management")
         print("3. Exit\n")
         print("======================== \n")
 
@@ -37,7 +37,7 @@ def main_menu():
         if choice == '1':
             destination_management()
         elif choice == '2':
-            activity_management() # Add activity management function
+            flight_management() 
         elif choice == '3':
             print("\nGoodbye!")
             break
@@ -126,6 +126,31 @@ def remove_destination():
             print("\nInvalid destination number. Please try again\n")
     except Exception as e:
         print(f"An error occurred while removing the destination: {str(e)}")
+
+
+def flight_management():
+    """
+    Display the flight management menu options
+    """
+    while True:
+        print("\n==== Flight Management ====\n")
+        print("1. Add new flight details")
+        print("2. View flight details")
+        print("3. Remove flight details")
+        print("4. Go back to main menu\n")
+        print("=========================== \n")
+
+        choice = input("Enter your choice: \n")
+        if choice == '1':
+            add_flight_details() # Add function to add flight details
+        elif choice == '2':
+            view_flight_details() # Add function to view flight details
+        elif choice == '3':
+            remove_flight_details() # Add function to remove flight details
+        elif choice == '4':
+            break
+        else:
+            print("\nInvalid choice. Please try again.")
 
 
 
