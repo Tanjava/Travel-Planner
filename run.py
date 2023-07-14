@@ -4,6 +4,7 @@
 
 import gspread
 from google.oauth2.service_account import Credentials
+from art import *
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -23,17 +24,19 @@ def main_menu():
     """
     Display the main menu options
     """
+    tprint("Travel Planner", font="doom")
+    print("Welcome to your personal travel planner!\n")
     while True:
 
         print("")
          
-        print("\n==== Travel Planner ====\n")
+        print("\n==== Main Travel Menu ====\n")
         print("1. Destination Management")
         print("2. Flight Management")
         print("3. Exit\n")
-        print("======================== \n")
+        print("========================== \n")
 
-        choice = input("Enter your choice: \n")
+        choice = input("\nEnter your choice: \n")
         if choice == '1':
             destination_management()
         elif choice == '2':
