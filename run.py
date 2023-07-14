@@ -17,14 +17,16 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('travel_planner')
 
 travel = SHEET.worksheet('travel')
-data = travel.get_all_values()
 
 
 def main_menu():
     """
     Display the main menu options
     """
-    while True: 
+    while True:
+
+        print("")
+         
         print("\n==== Travel Planner ====\n")
         print("1. Destination Management")
         print("2. Activity Management")
@@ -71,28 +73,30 @@ def add_destination():
     Update worksheet, add new row with new destination 
     """
     print("\n==== Add Destination ====\n")
-    city = input("Enter the city name: 'n")
+    city = input("Enter the city name: \n")
     country = input("Enter the country name: \n")
 
-    destination = f"\n{city}, {country}"
+    destination = f"{city}, {country}\n"
     try: 
         travel.append_row([destination])
-        print(f"{destination} added sucessfully!")
+        print(f"\n{destination} added sucessfully!")
     except Exception as e:
         print(f"An error occurred while adding your destination: {str(e)}")
 
 
 def view_destinations():
     """
-    View the user's destinations
+    Display destinations with their corresponding index numbers
     """
-    print("\n==== Your Destinations ====")
+    print("\n==== Your Destinations ====\n\n")
+    data = travel.get_all_values()
     try:
         if len(data) > 1:
             for row in data[1:]:
-                print(row[0])
+                index = data.index(row)
+                print(f"{index}. {row[0]}\n")
         else:
-            print("\n\nNo destinations found...\n")
+            print("\nNo destinations found...\n")
     except Exception as e:
         print(f"An error occurred while viewing your destinations: {str(e)}")
 
@@ -101,14 +105,15 @@ def remove_destination():
     """
     Update worksheet, remove the row of a specific destination 
     """
-    print("\n==== Remove Destinations ====")
+    print("\n==== Remove Destinations ====\n")
+    data = travel.get_all_values()
     try:
         if len(data) <= 1:
-            print("\n\nNo destinations found...\n")
+            print("\nNo destinations found...\n")
             return
 
         view_destinations()
-        del_destination = int(input("\n\nEnter the number of the destination you'd like to remove (enter 0 to go back): \n"))
+        del_destination = int(input("Enter the number of the destination you'd like to remove (enter 0 to go back): \n"))
 
         if del_destination == 0:
             return
