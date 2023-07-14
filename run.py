@@ -184,7 +184,7 @@ def add_flight_details():
             departure_time = input("Enter your departure time: \n")
             flight_details = f"{airline}, {flight_number}, {departure_date}, {departure_time}"
             travel.update_cell(destination_choice + 1, 2, flight_details)
-            print(f"\nSuccessfully added the following flight details for {destination}:\n {flight_details}")
+            print(f"\nSuccessfully added the following flight details for {destination}:\n{flight_details}")
         else:
             print("\nInvalid destination number. Please try again\n")
     except Exception as e:
@@ -268,7 +268,7 @@ def accommodation_management():
         print("2. View accommodation details")
         print("3. Remove accommodation details")
         print("4. Go back to main menu\n")
-        print("=========================== \n")
+        print("================================== \n")
 
         choice = input("Enter your choice: \n")
         if choice == '1':
@@ -305,14 +305,49 @@ def add_accommodation_details():
             hotel_name = input("\nEnter your hotel name: \n")
             check_in_date = input("Enter your check-in date: \n")
             check_out_date = input("Enter your check-out date: \n")
-            hotel_details = f"{hotel_name}, {check_in_date}, {check_out_date}\n"
-            travel.update_cell(destination_choice + 1, 3, hotel_details)
-            print(f"\nSuccessfully added the following accommodation details for {destination}: {hotel_details}")
+            accommodation_details = f"{hotel_name}, {check_in_date}, {check_out_date}"
+            travel.update_cell(destination_choice + 1, 3, accommodation_details)
+            print(f"\nSuccessfully added the following accommodation details for {destination}:\n{accommodation_details}")
         else:
             print("\nInvalid destination number. Please try again\n")
     except Exception as e:
         print(f"An error occurred while adding your activity: {str(e)}")
     
 
-main_menu()
+def view_accommodation_details():
+    """
+    Retrieve and view accommodation details of specific destination
+    """
+    print("\n==== View Accommodation Details ====\n")
+    data = travel.get_all_values()
+    try:
+        if len(data) <= 1:
+            print("\nNo destinations found...\n")
+            return
 
+        view_destinations()
+        destination_choice = int(input("\nEnter the number of your destination to view your accommodation details (enter 0 to go back): \n"))
+
+        if destination_choice == 0:
+            return
+
+        if destination_choice > 0 and destination_choice <= len(data) - 1:
+            destination = data[destination_choice][0]
+            accommodation_details = data[destination_choice][2]
+            if accommodation_details:
+                hotel_name, check_in_date, check_out_date = accommodation_details.split(", ")
+                print("\n==== View Accommodation Details ====\n")
+                print(f"\u2708  {destination} ")
+                print(f"Hotel: {hotel_name}")
+                print(f"Check-in Date: {check_in_date}")
+                print(f"Check-out Date: {check_out_date}")
+            else:
+                print("\nNo accommodation details found for this destination.")
+        else:
+            print("\nInvalid destination number. Please try again")
+    except Exception as e:
+        print(f"An error occurred while viewing accommodation details: {str(e)}") 
+
+        
+
+main_menu()
