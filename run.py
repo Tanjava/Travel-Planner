@@ -142,7 +142,7 @@ def flight_management():
 
         choice = input("Enter your choice: \n")
         if choice == '1':
-            add_flight_details() # Add function to add flight details
+            add_flight_details()
         elif choice == '2':
             view_flight_details() # Add function to view flight details
         elif choice == '3':
@@ -153,5 +153,39 @@ def flight_management():
             print("\nInvalid choice. Please try again.")
 
 
+def add_flight_details():
+    """
+    Update worksheet, add flight details to specific destination
+    """
+    print("\n==== Add Flight Details ====\n")
+    data = travel.get_all_values()
+    try:
+        if len(data) <= 1:
+            print("\nNo destinations found...\n")
+            return
+
+        view_destinations()
+        destination_choice = int(input("Enter the number of your destination to add your flight details (enter 0 to go back): \n"))
+
+        if destination_choice == 0:
+            return
+
+        if destination_choice > 0 and destination_choice <= len(data) - 1:
+            destination = data[destination_choice][0]
+            flight_details = data[destination_choice][1]
+            airline = input("\nEnter your airline: ")
+            flight_number = input("Enter your flight number: ")
+            departure_date = input("Enter your departure date: ")
+            departure_time = input("Enter your departure time: ")
+            flight_details = f"{airline}, {flight_number}, {departure_date}, {departure_time}"
+            travel.update_cell(destination_choice + 1, 2, flight_details)
+            print(f"\nSuccessfully added the following flight details for {destination}: {flight_details}")
+        else:
+            print("\nInvalid destination number. Please try again\n")
+    except Exception as e:
+        print(f"An error occurred while adding your activity: {str(e)}")
+
+
 
 main_menu()
+
