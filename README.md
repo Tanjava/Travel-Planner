@@ -4,10 +4,9 @@
 
 Travel Planner is a command-line application that allows the user to manage their travel plans, including destinations, flights and accommodations. The application presents menus with numbered options for the user to choose from. Clear prompts and instructions guide the user through each interaction and error messages will be displayed if the user enters invalid input or performs an action that is not allowed.
 
-The live link for the application can be found here - https://travel--planner-68934267527b.herokuapp.com/
+The live link for the app can be found here - https://travel--planner-68934267527b.herokuapp.com/
 
 # Table of Contents
-- [Design](#design)
 - [Features](#features)
   - [Existing Features](#existing-features)
     - [Destination Management](#destination-management)
@@ -19,17 +18,10 @@ The live link for the application can be found here - https://travel--planner-68
 - [Testing](#testing)
   - [Validator Testing](#validator-testing)
   - [Unfixed Bugs](#unfixed-bugs)
-- [Frameworks, Libraries and Programs](frameworks--libraries-and-programs)
+  - [Frameworks, Libraries and Programs](frameworks-libraries-and-programs)
 - [Deployment](#Deployment)
 - [Credits](#Credits)
 
-# Design
-### Flowchart
-
-[Lucid app](https://www.lucidchart.com/) was used to plan the logic for this project
-
-![Travel Planner Flowchart](assets/readme-images/tp-flowchart.png)
-# Features
 
 ## Existing Features:
 The first thing the user sees is the Travel Planner logo (ASCII text art), a welcome message, and the main travel menu for the user to manage their travels, specifically their destinations, flights and accommodations. The numbered options in the menus allow for easy navigation through the application.
@@ -59,6 +51,7 @@ In the destination management menu, the user has the following options to manage
 ### Data Validation and Error Handling
 Throughout the application, user input will be validated. If the user tries to perform an action that is not allowed or provides incorrect input, informative error messages will be displayed to guide them.
 
+
 ## Future Features
 - User Registration
   - When the application starts, it will prompt the user to either log in with their existing account or create a new one.
@@ -77,25 +70,35 @@ Google Sheet API was used to store, en keep track of, the following data:
 - Flight Data: For each destination, the flight details includes airline, flight number, departure date, and time.
 - Accommodation Data: Each destination has accommodation details, including the hotel name, check-in date, and check-out date.
 
+![Travel Planner worksheet](assets/readme-images/tp-worksheet.png)
+
 
 # Testing
 
-Testing was done by trying to break the application. 
+The app was constantly tested during development. I manually tested this project and my mentor Martina tried to break it. 
 
 ## Validator Testing
-The code for this project was tested using [PEP8](http://pep8online.com/)
+The code for this project was tested using [PEP8](https://pep8ci.herokuapp.com/#)
+
+Final testing warned about 4 lines being too long. This has not been yet been corrected and thus does not pass yet without any issues.
+
+![Travel Planner worksheet](assets/readme-images/tp-pep8-python-validator.png)
 
 
 ## Unfixed Bugs
 
+Right now the user can add an empty input field to the list when adding destinations, flight details or accommodation details. This needs to be fixed and prevented.
 
-# Frameworks, Libraries and Programs
-- [Gspread](https://docs.gspread.org/en/v3.7.0/api.html) -  enable opening, accessing and reading of googlesheet data
+
+## Frameworks, Libraries and Programs
+- [Gspread](https://docs.gspread.org/en/v5.10.0/) -  enable opening, accessing and reading of googlesheet data
 - [Credentials](https://pypi.org/project/credentials/) -  serve as unique identifiers required to access API
-- [Art](https://pypi.org/project/pyfiglet/0.7/) -  create the Travel Planner logo (ASCII text art)
-- [Heroku](https://id.heroku.com/)
+- [Art](https://pypi.org/project/art/) -  create the Travel Planner logo (ASCII text art)
+- [Lucid app](https://www.lucidchart.com/) - create flowchart
+- [Heroku](https://dashboard.heroku.com/)
 - [GitPod](https://www.gitpod.io/)
 - [GitHub](https://github.com/)
+
 
 # Deployment
 This application was deployed to Heroku. The steps to deploy are as follows:
@@ -113,6 +116,12 @@ This application was deployed to Heroku. The steps to deploy are as follows:
 8. Set up automatic deploys or deploy manually.
 
 
-# **Credits**
+# Credits
 
-*[Back to top](#travel-planner)*
+Code Institute course material and Love Sandwiches project helped building this app and incorporating google API.
+
+I also want to thank my mentor Martina for her feedback and continuous support, I really appreciate it!
+
+Some other usefull sites that really helped me throughout this project: 
+- https://stackoverflow.com
+- https://www.w3schools.com/
