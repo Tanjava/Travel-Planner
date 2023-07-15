@@ -33,12 +33,16 @@ In the destination management menu, the user has the following options to manage
 - The user can view their list of destinations, which will display the city and country names.
 - If the user decides to remove a destination, they can select it from the destinations list, and the application will delete it.
 
+![Travel Planner Destination Management](assets/readme-images/tp-destination-management.png)
+
 
 ### Flight Management
 In the destination management menu, the user has the following options to manage their destinations:
 - The user can select a destination from the destinations list and add flight details for that destination. The application will then prompt the user to enter the airline, flight number, departure date, and time for that destination.
 - Once the flight details are added, they can be viewed by the user.
 - If the user cancels their flight for a specfic destination, they can remove the flight details for that destination.
+
+![Travel Planner Destination Management](assets/readme-images/tp-flight-management.png)
 
 
 ### Accommodation Management
@@ -47,10 +51,15 @@ In the destination management menu, the user has the following options to manage
 - For each destination the user can view the accommodation details.
 - If the user changes their lodging plans for a specific destination, they can remove the accommodation details for that destination.
 
+![Travel Planner Destination Management](assets/readme-images/tp-accommodation-management.png)
+
 
 ### Data Validation and Error Handling
 Throughout the application, user input will be validated. If the user tries to perform an action that is not allowed or provides incorrect input, informative error messages will be displayed to guide them.
 
+Examples:
+- "No destinations found..."
+- "Invalid destination number. Returning to menu..."
 
 ## Future Features
 - User Registration
