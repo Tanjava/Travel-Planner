@@ -89,7 +89,7 @@ The app was constantly tested during development. I manually tested this project
 ## Validator Testing
 The code for this project was tested using [PEP8](https://pep8ci.herokuapp.com/#)
 
-Final testing warned about 4 lines being too long. This has not been yet been corrected and thus does not pass yet without any issues.
+Final testing warned about 4 lines being too long. This has not been yet been corrected and therefore does not pass yet without any issues. I unfortunately encountered this too late and too close to submission deadline, but I plan on resolving this. 
 
 ![Travel Planner worksheet](assets/readme-images/tp-pep8-python-validator.png)
 
