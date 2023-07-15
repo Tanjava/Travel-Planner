@@ -1,7 +1,3 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
-
 import gspread
 from google.oauth2.service_account import Credentials
 from art import *
@@ -27,7 +23,6 @@ def main_menu():
     tprint("Travel Planner", font="doom")
     print("Welcome to your personal travel planner!\n\n")
     while True:
-         
         print("\n==== Main Travel Menu ====\n")
         print("1. Manage Destinations")
         print("2. Manage Flights")
@@ -39,7 +34,7 @@ def main_menu():
         if choice == '1':
             destination_management()
         elif choice == '2':
-            flight_management() 
+            flight_management()
         elif choice == '3':
             accommodation_management()
         elif choice == '4':
@@ -47,6 +42,7 @@ def main_menu():
             break
         else:
             print("\nInvalid choice. Please try again.")
+
 
 def destination_management():
     """
@@ -72,16 +68,17 @@ def destination_management():
         else:
             print("\nInvalid choice. Please try again.")
 
+
 def add_destination():
     """
-    Update worksheet, add new row with new destination 
+    Update worksheet, add new row with new destination
     """
     print("\n==== Add Destination ====\n")
     city = input("Enter the city name: \n")
     country = input("Enter the country name: \n")
 
     destination = f"{city}, {country}"
-    try: 
+    try:
         travel.append_row([destination])
         print(f"\nSuccessfully added {destination}!")
     except Exception as e:
@@ -107,7 +104,7 @@ def view_destinations():
 
 def remove_destination():
     """
-    Update worksheet, remove the row of a specific destination 
+    Update worksheet, remove the row of a specific destination
     """
     print("\n==== Remove Destinations ====\n")
     data = travel.get_all_values()
@@ -117,7 +114,7 @@ def remove_destination():
             return
 
         view_destinations()
-        destination_choice = int(input("\nEnter the number of the destination you'd like to remove (enter 0 to go back): \n"))
+        destination_choice = int(input("\nEnter destination number you'd like to remove (enter 0 to go back): \n"))
 
         if destination_choice == 0:
             return
@@ -222,7 +219,7 @@ def view_flight_details():
         else:
             print("\nInvalid destination number. Returning...")
     except Exception as e:
-        print(f"An error occurred while viewing flight details: {str(e)}") 
+        print(f"An error occurred while viewing flight details: {str(e)}")
 
 
 def remove_flight_details():
@@ -246,14 +243,14 @@ def remove_flight_details():
             destination = data[destination_choice][0]
             flight_details = data[destination_choice][1]
             if flight_details:
-                travel.update_cell(destination_choice +1, 2, "")
+                travel.update_cell(destination_choice + 1, 2, "")
                 print(f"\nSucessfully removed flight details for {destination}")
-            else: 
+            else:
                 print("\nNo flight details found for this destination.")
         else:
             print("\nInvalid destination number. Returning...")
     except Exception as e:
-        print(f"An error occurred while viewing flight details: {str(e)}") 
+        print(f"An error occurred while viewing flight details: {str(e)}")
 
 
 def accommodation_management():
@@ -310,7 +307,7 @@ def add_accommodation_details():
             print("\nInvalid destination number. Returning...")
     except Exception as e:
         print(f"An error occurred while adding your activity: {str(e)}")
-    
+
 
 def view_accommodation_details():
     """
@@ -344,7 +341,7 @@ def view_accommodation_details():
         else:
             print("\nInvalid destination number. Returning...")
     except Exception as e:
-        print(f"An error occurred while viewing accommodation details: {str(e)}") 
+        print(f"An error occurred while viewing accommodation details: {str(e)}")
 
 
 def remove_accommodation_details():
@@ -368,15 +365,14 @@ def remove_accommodation_details():
             destination = data[destination_choice][0]
             accommodation_details = data[destination_choice][2]
             if accommodation_details:
-                travel.update_cell(destination_choice +1, 3, "")
+                travel.update_cell(destination_choice + 1, 3, "")
                 print(f"\nSucessfully removed accommodation details for {destination}")
-            else: 
+            else:
                 print("\nNo accommodation details found for this destination.")
         else:
             print("\nInvalid destination number. Returning...")
     except Exception as e:
-        print(f"An error occurred while viewing accommodation details: {str(e)}") 
-
+        print(f"An error occurred while viewing accommodation details: {str(e)}")
 
 
 main_menu()
