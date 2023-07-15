@@ -29,9 +29,9 @@ def main_menu():
     while True:
          
         print("\n==== Main Travel Menu ====\n")
-        print("1. Destination Management")
-        print("2. Flight Management")
-        print("3. Accommodation Management")
+        print("1. Manage Destinations")
+        print("2. Manage Flights")
+        print("3. Manage Accommodations")
         print("4. Exit\n")
         print("========================== \n")
 
@@ -43,7 +43,7 @@ def main_menu():
         elif choice == '3':
             accommodation_management()
         elif choice == '4':
-            print("\nGoodbye!")
+            print("\nGoodbye! Have a great trip!")
             break
         else:
             print("\nInvalid choice. Please try again.")
@@ -54,10 +54,10 @@ def destination_management():
     """
     while True:
         print("\n==== Destination Management ====\n")
-        print("1. Add new destination")
-        print("2. View destinations")
-        print("3. Remove destination")
-        print("4. Go back to main menu\n")
+        print("1. Add New Destination")
+        print("2. View Destinations")
+        print("3. Remove Destination")
+        print("4. Go back to Main Menu\n")
         print("================================ \n")
 
         choice = input("Enter your choice: \n")
@@ -90,7 +90,7 @@ def add_destination():
 
 def view_destinations():
     """
-    Display destinations with their corresponding index numbers
+    Retrieve and display destinations with their corresponding index numbers
     """
     print("\n==== Your Destinations ====\n\n")
     data = travel.get_all_values()
@@ -117,15 +117,15 @@ def remove_destination():
             return
 
         view_destinations()
-        del_destination = int(input("Enter the number of the destination you'd like to remove (enter 0 to go back): \n"))
+        destination_choice = int(input("\nEnter the number of the destination you'd like to remove (enter 0 to go back): \n"))
 
-        if del_destination == 0:
+        if destination_choice == 0:
             return
 
-        if del_destination > 0 and del_destination <= len(data) - 1:
-            destination = data[del_destination][0]
-            travel.delete_rows(del_destination + 1)
-            print(f"Successfully removed {destination}!")
+        if destination_choice > 0 and destination_choice <= len(data) - 1:
+            destination = data[destination_choice][0]
+            travel.delete_rows(destination_choice + 1)
+            print(f"\nSuccessfully removed {destination}!")
         else:
             print("\nInvalid destination number. Returning...")
     except Exception as e:
@@ -138,10 +138,10 @@ def flight_management():
     """
     while True:
         print("\n==== Flight Management ====\n")
-        print("1. Add new flight details")
-        print("2. View flight details")
-        print("3. Remove flight details")
-        print("4. Go back to main menu\n")
+        print("1. Add New Flight Details")
+        print("2. View Flight Details")
+        print("3. Remove Flight Details")
+        print("4. Go back to Main Menu\n")
         print("=========================== \n")
 
         choice = input("Enter your choice: \n")
@@ -262,10 +262,10 @@ def accommodation_management():
     """
     while True:
         print("\n==== Accommodation Management ====\n")
-        print("1. Add new accommodation details")
-        print("2. View accommodation details")
-        print("3. Remove accommodation details")
-        print("4. Go back to main menu\n")
+        print("1. Add New Accommodation Details")
+        print("2. View Accommodation Details")
+        print("3. Remove Accommodation Details")
+        print("4. Go back to Main Menu\n")
         print("================================== \n")
 
         choice = input("Enter your choice: \n")
@@ -285,7 +285,7 @@ def add_accommodation_details():
     """
     Update worksheet, add accommodation details to specific destination
     """
-    print("\n==== Add Flight Details ====\n")
+    print("\n==== Add Accommodation Details ====\n")
     data = travel.get_all_values()
     try:
         if len(data) <= 1:
